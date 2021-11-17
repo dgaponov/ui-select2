@@ -93,6 +93,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
           }, true);
           controller.$render = function () {
             if (isSelect) {
+              console.log('mmupd', controller.$viewValue);
               elm.select2('val', controller.$viewValue);
             } else {
               if (opts.multiple) {
@@ -212,6 +213,8 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
 
         // Initialize the plugin late so that the injected DOM does not disrupt the template compiler
         $timeout(function () {
+          console.log('element', elm);
+          console.log('opts', opts);
           elm.select2(opts);
 
           // Set initial value - I'm not sure about this but it seems to need to be there
