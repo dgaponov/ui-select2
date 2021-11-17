@@ -89,6 +89,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
             if (current === old) {
               return;
             }
+            console.log('old', old, 'new', current);
             controller.$render();
           }, true);
           controller.$render = function () {
