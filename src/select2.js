@@ -116,7 +116,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
                       elm.trigger('change');
                     }
                   });
-                }                  
+                }
               } else {
                 if (angular.isObject(controller.$viewValue)) {
                   elm.select2('data', controller.$viewValue);
@@ -164,7 +164,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
             // Set the view and model value and update the angular template manually for the ajax/multiple select2.
             elm.bind("change", function (e) {
               e.stopImmediatePropagation();
-              
+
               if (scope.$$phase || scope.$root.$$phase) {
                 return;
               }
@@ -216,6 +216,9 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
 
           // Set initial value - I'm not sure about this but it seems to need to be there
           elm.select2('data', controller.$modelValue);
+          console.log(controller.$modelValue);
+          console.log('ahhaha!');
+          console.log(controller.$modelValue);
           // important!
           controller.$render();
 
