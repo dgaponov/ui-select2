@@ -93,6 +93,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
             controller.$render();
           }, true);
           controller.$render = function () {
+            console.log('in render', controller.$viewValue);
             if (isSelect) {
               console.log('mmupd', controller.$viewValue);
               elm.select2('val', controller.$viewValue);
