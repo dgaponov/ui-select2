@@ -81,14 +81,6 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
         }
 
         if (controller) {
-          // Watch the model for programmatic changes
-           scope.$watch(tAttrs.ngModel, function(current, old) {
-            if (current === old) {
-              return;
-            }
-            console.log('old', old, 'new', current);
-            controller.$render();
-          }, true);
           controller.$render = function () {
             console.log('in render', controller.$viewValue);
             if (isSelect) {
@@ -104,7 +96,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
                   viewValue = viewValue.split(',');
                 }
                 elm.select2(
-                  'data', convertToSelect2Model(viewValue));
+                    'data', convertToSelect2Model(viewValue));
                 if (opts.sortable) {
                   elm.select2("container").find("ul.select2-choices").sortable({
                     containment: 'parent',
@@ -128,6 +120,15 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
               }
             }
           };
+
+          // Watch the model for programmatic changes
+           scope.$watch(tAttrs.ngModel, function(current, old) {
+            if (current === old) {
+              return;
+            }
+            console.log('old', old, 'new', current);
+            controller.$render();
+          }, true);
 
           // Watch the options dataset for changes
           if (watch) {
